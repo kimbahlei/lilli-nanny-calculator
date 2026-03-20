@@ -314,29 +314,51 @@
     .day-row.locked .time-field { opacity: 0.5; pointer-events: none; }
 
     /* ── MOBILE ── */
-    @media (max-width: 520px) {
+    @media (max-width: 600px) {
       .day-row {
+        display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        gap: 6px;
+        grid-template-rows: auto auto auto;
+        gap: 4px 8px;
         padding: 12px 14px;
       }
 
+      .day-row.header-row { display: none; }
+
       .day-name {
         grid-column: 1 / -1;
-        font-size: 0.9rem;
-        padding-bottom: 4px;
+        font-size: 0.92rem;
+        padding-bottom: 6px;
         border-bottom: 1px dashed var(--border);
         margin-bottom: 2px;
       }
 
-      .time-field label { display: block; }
+      .time-field { min-width: 0; }
+
+      .time-field label {
+        display: block;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--ink-light);
+        margin-bottom: 3px;
+      }
+
+      .time-field input[type="time"] {
+        font-size: 0.78rem;
+        padding: 6px 4px;
+        width: 100%;
+        min-width: 0;
+      }
 
       .elapsed {
         grid-column: 1 / -1;
         text-align: right;
         font-size: 0.85rem;
-        color: var(--ink-light);
+        font-weight: 700;
+        color: var(--ink);
+        padding-top: 2px;
       }
 
       .elapsed::before {
@@ -345,10 +367,13 @@
         color: var(--ink-light);
       }
 
-      .day-row.header-row { display: none; }
+      .same-time-row { gap: 8px; flex-wrap: wrap; }
 
-      .same-time-row { gap: 10px; }
-      .same-time-inputs input[type="time"] { width: 100px; }
+      .same-time-inputs input[type="time"] {
+        width: 90px;
+        font-size: 0.78rem;
+        padding: 5px 4px;
+      }
     }
 
     /* ── FAMILY CARD (non-host solo) ── */
@@ -628,15 +653,23 @@
     const div = document.getElementById('sh-same-inputs');
     if (checked) {
       div.classList.remove('disabled');
-      div.style.display = '';
+      // Only pre-fill if Tuesday already has user-entered values
       const s = document.getElementById('sh-tue-start').value;
       const e = document.getElementById('sh-tue-end').value;
       if (s) document.getElementById('sh-same-start').value = s;
       if (e) document.getElementById('sh-same-end').value   = e;
-      applySameShared();
+      // Only apply if we have actual values
+      if (s && e) applySameShared();
     } else {
+      // Clear master inputs and unlock rows
+      document.getElementById('sh-same-start').value = '';
+      document.getElementById('sh-same-end').value   = '';
       div.classList.add('disabled');
-      DAYS.forEach(d => document.getElementById('sh-' + d + '-row').classList.remove('locked'));
+      DAYS.forEach(d => {
+        document.getElementById('sh-' + d + '-start').value = '';
+        document.getElementById('sh-' + d + '-end').value   = '';
+        document.getElementById('sh-' + d + '-row').classList.remove('locked');
+      });
       calc();
     }
   }
@@ -664,11 +697,17 @@
       const e = document.getElementById('nh-tue-end').value;
       if (s) document.getElementById('nh-same-start').value = s;
       if (e) document.getElementById('nh-same-end').value   = e;
-      applySameNH();
+      if (s && e) applySameNH();
     } else {
+      document.getElementById('nh-same-start').value = '';
+      document.getElementById('nh-same-end').value   = '';
       div.classList.add('disabled');
       DAYS.forEach(d => {
+        const si = document.getElementById('nh-' + d + '-start');
+        const ei = document.getElementById('nh-' + d + '-end');
         const row = document.getElementById('nh-' + d + '-row');
+        if (si) si.value = '';
+        if (ei) ei.value = '';
         if (row) row.classList.remove('locked');
       });
       calc();
