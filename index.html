@@ -214,10 +214,7 @@
       transition: opacity 0.2s;
     }
 
-    .same-time-inputs.disabled {
-      opacity: 0.35;
-      pointer-events: none;
-    }
+    .same-time-inputs.disabled { display: none; }
 
     .same-time-inputs input[type="time"] {
       border: 1px solid var(--border);
@@ -240,10 +237,10 @@
 
     .day-row {
       display: grid;
-      grid-template-columns: 90px 1fr 1fr 56px;
+      grid-template-columns: 100px 1fr 1fr 52px;
       align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
+      gap: 6px;
+      padding: 10px 14px;
       border-bottom: 1px solid var(--border);
       transition: background 0.1s;
     }
@@ -292,12 +289,13 @@
     .time-field input[type="time"] {
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 7px 8px;
+      padding: 7px 6px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--ink);
       background: var(--white);
       width: 100%;
+      min-width: 0;
       cursor: pointer;
       transition: border-color 0.15s;
     }
@@ -485,9 +483,9 @@
         Same time all days
       </label>
       <div class="same-time-inputs disabled" id="sh-same-inputs">
-        <input type="time" id="sh-same-start" oninput="applySameShared()">
+        <input type="time" id="sh-same-start" value="" oninput="applySameShared()">
         <span class="time-sep">&#8594;</span>
-        <input type="time" id="sh-same-end" oninput="applySameShared()">
+        <input type="time" id="sh-same-end" value="" oninput="applySameShared()">
       </div>
     </div>
 
@@ -601,15 +599,15 @@
 
     return '<div class="family-card ' + colorClass + '">' +
       '<div class="family-card-header">' +
-        '<span>' + label + '\'s Hours at Hosting Home</span>' +
-        '<span class="rate-badge">Shared = $16/hr &bull; Solo = $23/hr</span>' +
+        '<span>' + label + '\'s Hours</span>' +
+        '' +
       '</div>' +
       '<div class="same-time-row" style="background:var(--white);">' +
         '<label><input type="checkbox" id="nh-same-check" onchange="toggleSameNH()"> Same time all days</label>' +
         '<div class="same-time-inputs disabled" id="nh-same-inputs">' +
-          '<input type="time" id="nh-same-start" oninput="applySameNH()">' +
+          '<input type="time" id="nh-same-start" value="" oninput="applySameNH()">' +
           '<span class="time-sep">&#8594;</span>' +
-          '<input type="time" id="nh-same-end" oninput="applySameNH()">' +
+          '<input type="time" id="nh-same-end" value="" oninput="applySameNH()">' +
         '</div>' +
       '</div>' +
       '<div class="day-rows">' +
@@ -630,6 +628,7 @@
     const div = document.getElementById('sh-same-inputs');
     if (checked) {
       div.classList.remove('disabled');
+      div.style.display = '';
       const s = document.getElementById('sh-tue-start').value;
       const e = document.getElementById('sh-tue-end').value;
       if (s) document.getElementById('sh-same-start').value = s;
