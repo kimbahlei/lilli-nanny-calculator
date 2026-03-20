@@ -159,7 +159,7 @@
       .col-time input[type="time"] { font-size: 0.72rem; padding: 6px 3px; }
       .arr { font-size: 0.7rem; }
       .col-hrs { flex: 0 0 36px; font-size: 0.78rem; }
-      .same-time-inputs input[type="time"] { width: 88px; font-size: 0.75rem; padding: 5px 3px; }
+      .same-time-inputs input[type="time"] { width: 100px; font-size: 0.78rem; }
       .day-row.header-row { display: none; }
     }
 
@@ -239,23 +239,26 @@
       </div>
     </div>
     <div class="day-row header-row">
-      <span class="col-day">Day</span><span class="col-time">Start</span><span class="col-time">End</span><span class="col-hrs">Hrs</span>
+      <span class="col-day">Day</span><span class="col-time">Start</span><span class="arr"></span><span class="col-time">End</span><span class="col-hrs">Hrs</span>
     </div>
     <div class="day-row" id="sh-tue-row">
       <span class="col-day">Tuesday</span>
       <div class="col-time"><input type="time" id="sh-tue-start" oninput="calc()"></div>
+      <span class="arr">&#8594;</span>
       <div class="col-time"><input type="time" id="sh-tue-end" oninput="calc()"></div>
       <span class="col-hrs" id="sh-tue-hrs">—</span>
     </div>
     <div class="day-row" id="sh-wed-row">
       <span class="col-day">Wednesday</span>
       <div class="col-time"><input type="time" id="sh-wed-start" oninput="calc()"></div>
+      <span class="arr">&#8594;</span>
       <div class="col-time"><input type="time" id="sh-wed-end" oninput="calc()"></div>
       <span class="col-hrs" id="sh-wed-hrs">—</span>
     </div>
     <div class="day-row" id="sh-thu-row">
       <span class="col-day">Thursday</span>
       <div class="col-time"><input type="time" id="sh-thu-start" oninput="calc()"></div>
+      <span class="arr">&#8594;</span>
       <div class="col-time"><input type="time" id="sh-thu-end" oninput="calc()"></div>
       <span class="col-hrs" id="sh-thu-hrs">—</span>
     </div>
@@ -331,7 +334,7 @@
       '<div class="day-row" id="nh-' + d + '-row">' +
         '<span class="col-day">' + DAY_LABELS[d] + '</span>' +
         '<div class="col-time"><input type="time" id="nh-' + d + '-start" oninput="calc()"></div>' +
-        ''
+        '<span class="arr">&#8594;</span>' +
         '<div class="col-time"><input type="time" id="nh-' + d + '-end" oninput="calc()"></div>' +
         '<span class="col-hrs" id="nh-' + d + '-hrs">\u2014</span>' +
       '</div>'
@@ -343,12 +346,12 @@
         '<label><input type="checkbox" id="nh-same-check" onchange="toggleSame(\'nh\')"> Same time all days</label>' +
         '<div class="same-time-inputs disabled" id="nh-same-inputs">' +
           '<input type="time" id="nh-same-start" oninput="applySame(\'nh\')">' +
-          ''
+          '<span class="arr">&#8594;</span>' +
           '<input type="time" id="nh-same-end" oninput="applySame(\'nh\')">' +
         '</div>' +
       '</div>' +
       '<div class="day-row header-row">' +
-        '<span class="col-day">Day</span><span class="col-time">Start</span><span class="col-time">End</span><span class="col-hrs">Hrs</span>' +
+        '<span class="col-day">Day</span><span class="col-time">Start</span><span class="arr"></span><span class="col-time">End</span><span class="col-hrs">Hrs</span>' +
       '</div>' +
       rows +
     '</div>';
