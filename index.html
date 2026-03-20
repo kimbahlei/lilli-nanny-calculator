@@ -57,6 +57,7 @@
       padding: 0 16px;
     }
 
+    /* ── WEEK BAR ── */
     .week-bar {
       display: flex;
       align-items: center;
@@ -98,8 +99,7 @@
       text-align: center;
     }
 
-    .host-section { margin-top: 24px; }
-
+    /* ── SECTION LABEL ── */
     .section-label {
       font-size: 0.75rem;
       font-weight: 600;
@@ -108,6 +108,9 @@
       color: var(--ink-light);
       margin-bottom: 10px;
     }
+
+    /* ── HOST TOGGLE ── */
+    .host-section { margin-top: 24px; }
 
     .host-toggle {
       display: flex;
@@ -143,6 +146,7 @@
       opacity: 0.7;
     }
 
+    /* ── CARD ── */
     .card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -165,7 +169,7 @@
       font-size: 1.1rem;
     }
 
-    .card-header .rate-badge {
+    .rate-badge {
       font-size: 0.75rem;
       font-weight: 600;
       padding: 3px 9px;
@@ -227,72 +231,135 @@
       transition: border-color 0.15s;
     }
 
-    .same-time-inputs input[type="time"]:focus {
-      outline: none;
-      border-color: var(--jade);
+    .same-time-inputs input[type="time"]:focus { outline: none; border-color: var(--jade); }
+
+    .time-sep { font-size: 0.8rem; color: var(--ink-light); flex-shrink: 0; }
+
+    /* ── DAY ROWS (responsive) ── */
+    .day-rows { width: 100%; }
+
+    .day-row {
+      display: grid;
+      grid-template-columns: 90px 1fr 1fr 56px;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.1s;
     }
 
-    /* ── TABLE ── */
-    table { width: 100%; border-collapse: collapse; }
+    .day-row:last-child { border-bottom: none; }
+    .day-row:hover { background: #faf9f6; }
 
-    thead th {
+    /* header row */
+    .day-row.header-row {
+      background: #faf9f6;
+      border-bottom: 1px solid var(--border);
+      padding: 8px 16px;
+    }
+
+    .day-row.header-row span {
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.07em;
       text-transform: uppercase;
       color: var(--ink-light);
-      padding: 10px 16px;
-      text-align: left;
-      background: #faf9f6;
-      border-bottom: 1px solid var(--border);
     }
 
-    tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
-    tbody tr:last-child { border-bottom: none; }
-    tbody tr:hover { background: #faf9f6; }
+    .day-row.header-row .hrs-head { text-align: right; }
 
-    td { padding: 11px 16px; font-size: 0.9rem; vertical-align: middle; }
-    td.day-name { font-weight: 600; width: 110px; color: var(--ink); }
+    .day-name {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--ink);
+    }
 
-    .time-input { display: flex; align-items: center; gap: 6px; }
+    .time-field {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
 
-    .time-input input[type="time"] {
+    .time-field label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      display: none; /* hidden on desktop, shown on mobile */
+    }
+
+    .time-field input[type="time"] {
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 6px 10px;
+      padding: 7px 8px;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.85rem;
       color: var(--ink);
       background: var(--white);
-      width: 120px;
+      width: 100%;
       cursor: pointer;
       transition: border-color 0.15s;
     }
 
-    .time-input input[type="time"]:focus { outline: none; border-color: var(--jade); }
+    .time-field input[type="time"]:focus { outline: none; border-color: var(--jade); }
 
-    /* locked = filled by "same time" checkbox — dim the row inputs */
-    tr.locked .time-input { opacity: 0.5; pointer-events: none; }
-
-    .time-sep { font-size: 0.8rem; color: var(--ink-light); }
-
-    .elapsed { font-weight: 600; font-size: 0.9rem; min-width: 48px; text-align: right; }
-
-    /* ── SOLO ── */
-    .solo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 20px;
+    .elapsed {
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-align: right;
+      white-space: nowrap;
+      color: var(--ink);
     }
 
-    @media (max-width: 600px) { .solo-grid { grid-template-columns: 1fr; } }
+    /* locked rows */
+    .day-row.locked .time-field { opacity: 0.5; pointer-events: none; }
 
+    /* ── MOBILE ── */
+    @media (max-width: 520px) {
+      .day-row {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 6px;
+        padding: 12px 14px;
+      }
+
+      .day-name {
+        grid-column: 1 / -1;
+        font-size: 0.9rem;
+        padding-bottom: 4px;
+        border-bottom: 1px dashed var(--border);
+        margin-bottom: 2px;
+      }
+
+      .time-field label { display: block; }
+
+      .elapsed {
+        grid-column: 1 / -1;
+        text-align: right;
+        font-size: 0.85rem;
+        color: var(--ink-light);
+      }
+
+      .elapsed::before {
+        content: 'Hours: ';
+        font-weight: 400;
+        color: var(--ink-light);
+      }
+
+      .day-row.header-row { display: none; }
+
+      .same-time-row { gap: 10px; }
+      .same-time-inputs input[type="time"] { width: 100px; }
+    }
+
+    /* ── FAMILY CARD (non-host solo) ── */
     .family-card {
       border-radius: var(--radius);
       border: 2px solid transparent;
       overflow: hidden;
       box-shadow: var(--shadow);
+      margin-top: 20px;
     }
 
     .family-card.jade-card   { border-color: var(--jade-mid); }
@@ -304,36 +371,16 @@
       font-size: 0.9rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 8px;
     }
 
     .jade-card .family-card-header   { background: var(--jade-light);   color: var(--jade); }
     .hunter-card .family-card-header { background: var(--hunter-light); color: var(--hunter); }
 
-    .host-badge {
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.6);
-    }
+    .family-card-header .rate-badge { margin-left: auto; }
 
-    .jade-card .host-badge   { color: var(--jade); }
-    .hunter-card .host-badge { color: var(--hunter); }
-
-    .family-card table    { background: var(--white); }
-    .family-card thead th { background: var(--white); }
-
-    .no-solo-msg {
-      padding: 24px 20px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--ink-light);
-      font-style: italic;
-      background: var(--white);
-    }
+    .family-card .day-rows { background: var(--white); }
+    .family-card .day-row.header-row { background: var(--white); }
 
     /* ── SUMMARY ── */
     .summary-section { margin-top: 28px; }
@@ -344,7 +391,7 @@
       gap: 16px;
     }
 
-    @media (max-width: 600px) { .summary-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 520px) { .summary-grid { grid-template-columns: 1fr; } }
 
     .summary-card { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
     .summary-card.jade   { border: 2px solid var(--jade-mid); }
@@ -379,6 +426,7 @@
     .summary-row .label { color: var(--ink-light); }
     .summary-row .value { font-weight: 600; }
 
+    /* ── ACTIONS ── */
     .actions { margin-top: 28px; display: flex; gap: 12px; justify-content: flex-end; }
 
     .btn {
@@ -424,11 +472,11 @@
     </div>
   </div>
 
-  <!-- SHARED NANNY TIME -->
+  <!-- LILLI'S FULL DAY (hosting family) -->
   <div class="card" style="margin-top:24px;">
     <div class="card-header">
-      <h2>Shared Nanny Time</h2>
-      <span class="rate-badge">$16 / hr</span>
+      <h2>Lilli's Hours</h2>
+      <span id="host-rate-badge" class="rate-badge">Hosting family's schedule</span>
     </div>
 
     <div class="same-time-row">
@@ -443,60 +491,34 @@
       </div>
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Day</th>
-          <th>Start Time</th>
-          <th>End Time</th>
-          <th style="text-align:right">Hours</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr id="sh-tue-row">
-          <td class="day-name">Tuesday</td>
-          <td><div class="time-input">
-            <input type="time" id="sh-tue-start" oninput="calc()">
-            <span class="time-sep">&#8594;</span>
-            <input type="time" id="sh-tue-end" oninput="calc()">
-          </div></td>
-          <td></td>
-          <td class="elapsed" id="sh-tue-hrs">—</td>
-        </tr>
-        <tr id="sh-wed-row">
-          <td class="day-name">Wednesday</td>
-          <td><div class="time-input">
-            <input type="time" id="sh-wed-start" oninput="calc()">
-            <span class="time-sep">&#8594;</span>
-            <input type="time" id="sh-wed-end" oninput="calc()">
-          </div></td>
-          <td></td>
-          <td class="elapsed" id="sh-wed-hrs">—</td>
-        </tr>
-        <tr id="sh-thu-row">
-          <td class="day-name">Thursday</td>
-          <td><div class="time-input">
-            <input type="time" id="sh-thu-start" oninput="calc()">
-            <span class="time-sep">&#8594;</span>
-            <input type="time" id="sh-thu-end" oninput="calc()">
-          </div></td>
-          <td></td>
-          <td class="elapsed" id="sh-thu-hrs">—</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="day-rows">
+      <div class="day-row header-row">
+        <span>Day</span><span>Start Time</span><span>End Time</span><span class="hrs-head">Hrs</span>
+      </div>
+      <div class="day-row" id="sh-tue-row">
+        <span class="day-name">Tuesday</span>
+        <div class="time-field"><label>Start</label><input type="time" id="sh-tue-start" oninput="calc()"></div>
+        <div class="time-field"><label>End</label><input type="time" id="sh-tue-end" oninput="calc()"></div>
+        <span class="elapsed" id="sh-tue-hrs">—</span>
+      </div>
+      <div class="day-row" id="sh-wed-row">
+        <span class="day-name">Wednesday</span>
+        <div class="time-field"><label>Start</label><input type="time" id="sh-wed-start" oninput="calc()"></div>
+        <div class="time-field"><label>End</label><input type="time" id="sh-wed-end" oninput="calc()"></div>
+        <span class="elapsed" id="sh-wed-hrs">—</span>
+      </div>
+      <div class="day-row" id="sh-thu-row">
+        <span class="day-name">Thursday</span>
+        <div class="time-field"><label>Start</label><input type="time" id="sh-thu-start" oninput="calc()"></div>
+        <div class="time-field"><label>End</label><input type="time" id="sh-thu-end" oninput="calc()"></div>
+        <span class="elapsed" id="sh-thu-hrs">—</span>
+      </div>
+    </div>
   </div>
 
-  <!-- SOLO TIME -->
-  <div style="margin-top:24px;" id="solo-section">
-<div class="family-card jade-card" id="jade-solo-card" style="display:none;">
-      <div class="family-card-header"><span>Jade</span></div>
-      <div id="jade-solo-body"></div>
-    </div>
-    <div class="family-card hunter-card" id="hunter-solo-card" style="display:none;">
-      <div class="family-card-header"><span>Hunter</span></div>
-      <div id="hunter-solo-body"></div>
-    </div>
+  <!-- NON-HOST FAMILY HOURS (the overlap = shared time) -->
+  <div id="nonhost-card-wrap">
+    <!-- filled by renderNonHostCard() -->
   </div>
 
   <!-- SUMMARY -->
@@ -544,7 +566,7 @@
     const thu = new Date(tue);
     thu.setDate(tue.getDate() + 2);
     const o = { month:'short', day:'numeric' };
-    return `${tue.toLocaleDateString('en-US', o)} – ${thu.toLocaleDateString('en-US', o)}`;
+    return tue.toLocaleDateString('en-US', o) + ' \u2013 ' + thu.toLocaleDateString('en-US', o);
   }
 
   function updateWeekDisplay() {
@@ -560,25 +582,61 @@
     host = h;
     document.getElementById('host-jade').className   = h === 'jade'   ? 'active-jade'   : '';
     document.getElementById('host-hunter').className = h === 'hunter' ? 'active-hunter' : '';
-    renderSoloPanels();
+    renderNonHostCard();
     calc();
   }
-  setHost('jade');
 
-  // ── SAME TIME — SHARED ────────────────────────────────
+  // ── NON-HOST CARD ─────────────────────────────────────
+  function nonHostCardHTML(family) {
+    const colorClass = family + '-card';
+    const label = family === 'jade' ? 'Jade' : 'Hunter';
+    const rows = DAYS.map(d =>
+      '<div class="day-row" id="nh-' + d + '-row">' +
+        '<span class="day-name">' + DAY_LABELS[d] + '</span>' +
+        '<div class="time-field"><label>Start</label><input type="time" id="nh-' + d + '-start" oninput="calc()"></div>' +
+        '<div class="time-field"><label>End</label><input type="time" id="nh-' + d + '-end" oninput="calc()"></div>' +
+        '<span class="elapsed" id="nh-' + d + '-hrs">\u2014</span>' +
+      '</div>'
+    ).join('');
+
+    return '<div class="family-card ' + colorClass + '">' +
+      '<div class="family-card-header">' +
+        '<span>' + label + '\'s Hours at Hosting Home</span>' +
+        '<span class="rate-badge">Shared = $16/hr &bull; Solo = $23/hr</span>' +
+      '</div>' +
+      '<div class="same-time-row" style="background:var(--white);">' +
+        '<label><input type="checkbox" id="nh-same-check" onchange="toggleSameNH()"> Same time all days</label>' +
+        '<div class="same-time-inputs disabled" id="nh-same-inputs">' +
+          '<input type="time" id="nh-same-start" oninput="applySameNH()">' +
+          '<span class="time-sep">&#8594;</span>' +
+          '<input type="time" id="nh-same-end" oninput="applySameNH()">' +
+        '</div>' +
+      '</div>' +
+      '<div class="day-rows">' +
+        '<div class="day-row header-row"><span>Day</span><span>Start Time</span><span>End Time</span><span class="hrs-head">Hrs</span></div>' +
+        rows +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderNonHostCard() {
+    const nonHost = host === 'jade' ? 'hunter' : 'jade';
+    document.getElementById('nonhost-card-wrap').innerHTML = nonHostCardHTML(nonHost);
+  }
+
+  // ── SAME TIME — LILLI ─────────────────────────────────
   function toggleSameShared() {
     const checked = document.getElementById('sh-same-check').checked;
-    const inputsDiv = document.getElementById('sh-same-inputs');
+    const div = document.getElementById('sh-same-inputs');
     if (checked) {
-      inputsDiv.classList.remove('disabled');
-      // Pre-fill master from Tuesday if already set
+      div.classList.remove('disabled');
       const s = document.getElementById('sh-tue-start').value;
       const e = document.getElementById('sh-tue-end').value;
       if (s) document.getElementById('sh-same-start').value = s;
       if (e) document.getElementById('sh-same-end').value   = e;
       applySameShared();
     } else {
-      inputsDiv.classList.add('disabled');
+      div.classList.add('disabled');
       DAYS.forEach(d => document.getElementById('sh-' + d + '-row').classList.remove('locked'));
       calc();
     }
@@ -586,111 +644,72 @@
 
   function applySameShared() {
     if (!document.getElementById('sh-same-check').checked) return;
-    const start = document.getElementById('sh-same-start').value;
-    const end   = document.getElementById('sh-same-end').value;
+    const s = document.getElementById('sh-same-start').value;
+    const e = document.getElementById('sh-same-end').value;
     DAYS.forEach(d => {
-      document.getElementById('sh-' + d + '-start').value = start;
-      document.getElementById('sh-' + d + '-end').value   = end;
+      document.getElementById('sh-' + d + '-start').value = s;
+      document.getElementById('sh-' + d + '-end').value   = e;
       const row = document.getElementById('sh-' + d + '-row');
-      if (start || end) row.classList.add('locked');
-      else row.classList.remove('locked');
+      if (s || e) row.classList.add('locked'); else row.classList.remove('locked');
     });
     calc();
   }
 
-  // ── SAME TIME — SOLO ──────────────────────────────────
-  function toggleSameSolo(family) {
-    const checked = document.getElementById('solo-' + family + '-same-check').checked;
-    const inputsDiv = document.getElementById('solo-' + family + '-same-inputs');
+  // ── SAME TIME — NON-HOST ──────────────────────────────
+  function toggleSameNH() {
+    const checked = document.getElementById('nh-same-check').checked;
+    const div = document.getElementById('nh-same-inputs');
     if (checked) {
-      inputsDiv.classList.remove('disabled');
-      const s = document.getElementById('solo-' + family + '-tue-start').value;
-      const e = document.getElementById('solo-' + family + '-tue-end').value;
-      if (s) document.getElementById('solo-' + family + '-same-start').value = s;
-      if (e) document.getElementById('solo-' + family + '-same-end').value   = e;
-      applySameSolo(family);
+      div.classList.remove('disabled');
+      const s = document.getElementById('nh-tue-start').value;
+      const e = document.getElementById('nh-tue-end').value;
+      if (s) document.getElementById('nh-same-start').value = s;
+      if (e) document.getElementById('nh-same-end').value   = e;
+      applySameNH();
     } else {
-      inputsDiv.classList.add('disabled');
+      div.classList.add('disabled');
       DAYS.forEach(d => {
-        const row = document.getElementById('solo-' + family + '-' + d + '-row');
+        const row = document.getElementById('nh-' + d + '-row');
         if (row) row.classList.remove('locked');
       });
       calc();
     }
   }
 
-  function applySameSolo(family) {
-    if (!document.getElementById('solo-' + family + '-same-check').checked) return;
-    const start = document.getElementById('solo-' + family + '-same-start').value;
-    const end   = document.getElementById('solo-' + family + '-same-end').value;
+  function applySameNH() {
+    if (!document.getElementById('nh-same-check').checked) return;
+    const s = document.getElementById('nh-same-start').value;
+    const e = document.getElementById('nh-same-end').value;
     DAYS.forEach(d => {
-      const s = document.getElementById('solo-' + family + '-' + d + '-start');
-      const e = document.getElementById('solo-' + family + '-' + d + '-end');
-      const row = document.getElementById('solo-' + family + '-' + d + '-row');
-      if (!s) return;
-      s.value = start;
-      e.value = end;
-      if (row) {
-        if (start || end) row.classList.add('locked');
-        else row.classList.remove('locked');
-      }
+      const si = document.getElementById('nh-' + d + '-start');
+      const ei = document.getElementById('nh-' + d + '-end');
+      const row = document.getElementById('nh-' + d + '-row');
+      if (!si) return;
+      si.value = s; ei.value = e;
+      if (row) { if (s || e) row.classList.add('locked'); else row.classList.remove('locked'); }
     });
     calc();
-  }
-
-  // ── SOLO PANELS ───────────────────────────────────────
-  function soloTableHTML(family) {
-    const rows = DAYS.map(d =>
-      '<tr id="solo-' + family + '-' + d + '-row">' +
-        '<td class="day-name" style="font-size:0.83rem">' + DAY_LABELS[d] + '</td>' +
-        '<td><div class="time-input" style="gap:4px;">' +
-          '<input type="time" id="solo-' + family + '-' + d + '-start" oninput="calc()" style="width:105px">' +
-          '<span class="time-sep">&#8594;</span>' +
-          '<input type="time" id="solo-' + family + '-' + d + '-end" oninput="calc()" style="width:105px">' +
-        '</div></td>' +
-        '<td></td>' +
-        '<td class="elapsed" id="solo-' + family + '-' + d + '-hrs">&#x2014;</td>' +
-      '</tr>'
-    ).join('');
-
-    return (
-      '<div class="same-time-row" style="background:var(--white);">' +
-        '<label>' +
-          '<input type="checkbox" id="solo-' + family + '-same-check" onchange="toggleSameSolo(\'' + family + '\')">' +
-          ' Same time all days' +
-        '</label>' +
-        '<div class="same-time-inputs disabled" id="solo-' + family + '-same-inputs">' +
-          '<input type="time" id="solo-' + family + '-same-start" oninput="applySameSolo(\'' + family + '\')">' +
-          '<span class="time-sep">&#8594;</span>' +
-          '<input type="time" id="solo-' + family + '-same-end" oninput="applySameSolo(\'' + family + '\')">' +
-        '</div>' +
-      '</div>' +
-      '<table><thead><tr>' +
-        '<th>Day</th><th>Start</th><th>End</th><th style="text-align:right">Hrs</th>' +
-      '</tr></thead><tbody>' + rows + '</tbody></table>'
-    );
-  }
-
-  function renderSoloPanels() {
-    ['jade','hunter'].forEach(f => {
-      const card = document.getElementById(f + '-solo-card');
-      const body = document.getElementById(f + '-solo-body');
-      if (f === host) {
-        card.style.display = 'none';
-        body.innerHTML = '';
-      } else {
-        card.style.display = 'block';
-        body.innerHTML = soloTableHTML(f);
-      }
-    });
   }
 
   // ── TIME HELPERS ──────────────────────────────────────
   function parseTime(id) {
     const el = document.getElementById(id);
     if (!el || !el.value) return null;
-    const parts = el.value.split(':').map(Number);
-    return parts[0] * 60 + parts[1];
+    const p = el.value.split(':').map(Number);
+    return p[0] * 60 + p[1];
+  }
+
+  function overlapHours(lilliStartId, lilliEndId, nhStartId, nhEndId) {
+    const ls = parseTime(lilliStartId);
+    const le = parseTime(lilliEndId);
+    const ns = parseTime(nhStartId);
+    const ne = parseTime(nhEndId);
+    if (ls === null || le === null || ns === null || ne === null) return 0;
+    // overlap = max(starts) to min(ends)
+    const overlapStart = Math.max(ls, ns);
+    const overlapEnd   = Math.min(le, ne);
+    if (overlapEnd <= overlapStart) return 0;
+    return (overlapEnd - overlapStart) / 60;
   }
 
   function hoursElapsed(startId, endId) {
@@ -704,38 +723,55 @@
   function fmtMoney(n) { return '$' + n.toFixed(2); }
 
   // ── CALC ─────────────────────────────────────────────
+  // Logic:
+  //   sharedHrs (per day) = overlap between Lilli's hours and non-host's hours at the hosting home
+  //   hostSoloHrs (per day) = Lilli's total hours - sharedHrs  (hosting family absorbs this)
+  //   nonHostSoloHrs = 0 (they only pay for shared time)
+  //
+  //   Host pays:    sharedHrs × $16  +  hostSoloHrs × $23
+  //   NonHost pays: sharedHrs × $16
+
   function calc() {
-    let sharedTotal = 0;
+    let totalShared   = 0;
+    let totalLilli    = 0;
+    let totalHostSolo = 0;
+
     DAYS.forEach(d => {
-      const hrs = hoursElapsed('sh-' + d + '-start', 'sh-' + d + '-end');
-      sharedTotal += hrs;
-      document.getElementById('sh-' + d + '-hrs').textContent = fmtHrs(hrs);
+      const lilliHrs  = hoursElapsed('sh-' + d + '-start', 'sh-' + d + '-end');
+      const shared    = overlapHours('sh-' + d + '-start', 'sh-' + d + '-end', 'nh-' + d + '-start', 'nh-' + d + '-end');
+      const hostSolo  = Math.max(0, lilliHrs - shared);
+
+      totalLilli    += lilliHrs;
+      totalShared   += shared;
+      totalHostSolo += hostSolo;
+
+      // Show Lilli's total hours per day
+      document.getElementById('sh-' + d + '-hrs').textContent = fmtHrs(lilliHrs);
+
+      // Show non-host's shared hours per day
+      const nhEl = document.getElementById('nh-' + d + '-hrs');
+      if (nhEl) nhEl.textContent = fmtHrs(shared);
     });
 
-    const sharedCostEach = sharedTotal * SHARED_RATE;
+    const sharedCostEach  = totalShared   * SHARED_RATE;
+    const hostSoloCost    = totalHostSolo * SOLO_RATE;
+
     const nonHost = host === 'jade' ? 'hunter' : 'jade';
 
-    let nonHostSoloHrs = 0;
-    DAYS.forEach(d => {
-      const elEl = document.getElementById('solo-' + nonHost + '-' + d + '-hrs');
-      if (!elEl) return;
-      const hrs = hoursElapsed('solo-' + nonHost + '-' + d + '-start', 'solo-' + nonHost + '-' + d + '-end');
-      nonHostSoloHrs += hrs;
-      elEl.textContent = fmtHrs(hrs);
-    });
+    const hostCosts    = { shared: sharedCostEach, solo: hostSoloCost };
+    const nonHostCosts = { shared: sharedCostEach, solo: 0 };
 
-    const nonHostSoloCost = nonHostSoloHrs * SOLO_RATE;
-    const jadeCosts   = { shared: sharedCostEach, solo: host === 'hunter' ? nonHostSoloCost : 0 };
-    const hunterCosts = { shared: sharedCostEach, solo: host === 'jade'   ? nonHostSoloCost : 0 };
-    const jadeSoloHrs   = host === 'hunter' ? nonHostSoloHrs : 0;
-    const hunterSoloHrs = host === 'jade'   ? nonHostSoloHrs : 0;
+    const jadeCosts   = host === 'jade'   ? hostCosts    : nonHostCosts;
+    const hunterCosts = host === 'hunter' ? hostCosts    : nonHostCosts;
+    const jadeSolo    = host === 'jade'   ? totalHostSolo : 0;
+    const hunterSolo  = host === 'hunter' ? totalHostSolo : 0;
 
-    document.getElementById('jade-shared-line').textContent = fmtHrs(sharedTotal) + ' hrs = ' + fmtMoney(jadeCosts.shared);
-    document.getElementById('jade-solo-line').textContent   = jadeCosts.solo > 0 ? fmtHrs(jadeSoloHrs) + ' hrs = ' + fmtMoney(jadeCosts.solo) : '—';
+    document.getElementById('jade-shared-line').textContent = fmtHrs(totalShared) + ' hrs = ' + fmtMoney(jadeCosts.shared);
+    document.getElementById('jade-solo-line').textContent   = jadeCosts.solo > 0 ? fmtHrs(jadeSolo) + ' hrs = ' + fmtMoney(jadeCosts.solo) : '\u2014';
     document.getElementById('jade-total').textContent       = fmtMoney(jadeCosts.shared + jadeCosts.solo);
 
-    document.getElementById('hunter-shared-line').textContent = fmtHrs(sharedTotal) + ' hrs = ' + fmtMoney(hunterCosts.shared);
-    document.getElementById('hunter-solo-line').textContent   = hunterCosts.solo > 0 ? fmtHrs(hunterSoloHrs) + ' hrs = ' + fmtMoney(hunterCosts.solo) : '—';
+    document.getElementById('hunter-shared-line').textContent = fmtHrs(totalShared) + ' hrs = ' + fmtMoney(hunterCosts.shared);
+    document.getElementById('hunter-solo-line').textContent   = hunterCosts.solo > 0 ? fmtHrs(hunterSolo) + ' hrs = ' + fmtMoney(hunterCosts.solo) : '\u2014';
     document.getElementById('hunter-total').textContent       = fmtMoney(hunterCosts.shared + hunterCosts.solo);
   }
 
@@ -745,12 +781,13 @@
     document.querySelectorAll('input[type="time"]').forEach(el => el.value = '');
     document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
     document.querySelectorAll('.same-time-inputs').forEach(el => el.classList.add('disabled'));
-    document.querySelectorAll('tr.locked').forEach(el => el.classList.remove('locked'));
-    renderSoloPanels();
+    document.querySelectorAll('.day-row.locked').forEach(el => el.classList.remove('locked'));
+    renderNonHostCard();
     calc();
   }
 
   // ── INIT ─────────────────────────────────────────────
+  setHost('jade');
   calc();
 </script>
 </body>
