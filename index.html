@@ -237,7 +237,7 @@
 
     .day-row {
       display: grid;
-      grid-template-columns: 100px 1fr 1fr 52px;
+      grid-template-columns: 110px 1fr 52px;
       align-items: center;
       gap: 6px;
       padding: 10px 14px;
@@ -311,7 +311,7 @@
     }
 
     /* locked rows */
-    .day-row.locked .time-field { opacity: 0.5; pointer-events: none; }
+    .day-row.locked .time-pair { opacity: 0.5; pointer-events: none; }
 
     /* ── MOBILE ── */
     @media (max-width: 600px) {
@@ -319,7 +319,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 4px;
+        gap: 6px;
         padding: 10px 12px;
         flex-wrap: nowrap;
       }
@@ -329,39 +329,38 @@
       .day-name {
         font-size: 0.78rem;
         font-weight: 700;
-        width: 68px;
-        min-width: 68px;
+        width: 72px;
+        min-width: 72px;
         flex-shrink: 0;
       }
 
-      .time-field {
+      /* time-pair fills remaining space, arrow stays between fields */
+      .time-pair {
         flex: 1;
         min-width: 0;
+        gap: 4px;
       }
 
       .time-field label { display: none; }
 
       .time-field input[type="time"] {
         font-size: 0.72rem;
-        padding: 5px 2px;
-        width: 100%;
-        min-width: 0;
+        padding: 5px 3px;
         text-align: center;
       }
 
       .time-sep {
         font-size: 0.7rem;
-        flex-shrink: 0;
-        padding: 0 1px;
+        padding: 0;
       }
 
       .elapsed {
-        font-size: 0.78rem;
+        font-size: 0.8rem;
         font-weight: 700;
         color: var(--ink);
         white-space: nowrap;
         flex-shrink: 0;
-        min-width: 36px;
+        min-width: 34px;
         text-align: right;
       }
 
@@ -520,23 +519,17 @@
       </div>
       <div class="day-row" id="sh-tue-row">
         <span class="day-name">Tuesday</span>
-        <div class="time-field"><label>Start</label><input type="time" id="sh-tue-start" oninput="calc()"></div>
-        <span class="time-sep">&#8594;</span>
-        <div class="time-field"><label>End</label><input type="time" id="sh-tue-end" oninput="calc()"></div>
+        <div class="time-pair"><div class="time-field"><label>Start</label><input type="time" id="sh-tue-start" oninput="calc()"></div><span class="time-sep">&#8594;</span><div class="time-field"><label>End</label><input type="time" id="sh-tue-end" oninput="calc()"></div></div>
         <span class="elapsed" id="sh-tue-hrs">—</span>
       </div>
       <div class="day-row" id="sh-wed-row">
         <span class="day-name">Wednesday</span>
-        <div class="time-field"><label>Start</label><input type="time" id="sh-wed-start" oninput="calc()"></div>
-        <span class="time-sep">&#8594;</span>
-        <div class="time-field"><label>End</label><input type="time" id="sh-wed-end" oninput="calc()"></div>
+        <div class="time-pair"><div class="time-field"><label>Start</label><input type="time" id="sh-wed-start" oninput="calc()"></div><span class="time-sep">&#8594;</span><div class="time-field"><label>End</label><input type="time" id="sh-wed-end" oninput="calc()"></div></div>
         <span class="elapsed" id="sh-wed-hrs">—</span>
       </div>
       <div class="day-row" id="sh-thu-row">
         <span class="day-name">Thursday</span>
-        <div class="time-field"><label>Start</label><input type="time" id="sh-thu-start" oninput="calc()"></div>
-        <span class="time-sep">&#8594;</span>
-        <div class="time-field"><label>End</label><input type="time" id="sh-thu-end" oninput="calc()"></div>
+        <div class="time-pair"><div class="time-field"><label>Start</label><input type="time" id="sh-thu-start" oninput="calc()"></div><span class="time-sep">&#8594;</span><div class="time-field"><label>End</label><input type="time" id="sh-thu-end" oninput="calc()"></div></div>
         <span class="elapsed" id="sh-thu-hrs">—</span>
       </div>
     </div>
@@ -619,9 +612,11 @@
     const rows = DAYS.map(d =>
       '<div class="day-row" id="nh-' + d + '-row">' +
         '<span class="day-name">' + DAY_LABELS[d] + '</span>' +
+        '<div class="time-pair">' +
         '<div class="time-field"><label>Start</label><input type="time" id="nh-' + d + '-start" oninput="calc()"></div>' +
         '<span class="time-sep">&#8594;</span>' +
         '<div class="time-field"><label>End</label><input type="time" id="nh-' + d + '-end" oninput="calc()"></div>' +
+        '</div>' +
         '<span class="elapsed" id="nh-' + d + '-hrs">\u2014</span>' +
       '</div>'
     ).join('');
