@@ -38,26 +38,16 @@
       padding: 28px 24px 22px;
       text-align: center;
     }
-
     header h1 {
       font-family: 'DM Serif Display', serif;
       font-size: 2rem;
       letter-spacing: -0.5px;
     }
+    header p { font-size: 0.875rem; color: var(--ink-light); margin-top: 4px; }
 
-    header p {
-      font-size: 0.875rem;
-      color: var(--ink-light);
-      margin-top: 4px;
-    }
+    .container { max-width: 820px; margin: 0 auto; padding: 0 16px; }
 
-    .container {
-      max-width: 820px;
-      margin: 0 auto;
-      padding: 0 16px;
-    }
-
-    /* ── WEEK BAR ── */
+    /* WEEK BAR */
     .week-bar {
       display: flex;
       align-items: center;
@@ -66,405 +56,145 @@
       border-bottom: 1px solid var(--border);
       padding: 14px 24px;
       gap: 12px;
-      flex-wrap: wrap;
     }
-
-    .week-label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-    }
-
+    .week-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
     .week-nav { display: flex; align-items: center; gap: 10px; }
-
     .week-nav button {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      width: 32px; height: 32px;
-      cursor: pointer;
-      font-size: 1rem;
-      color: var(--ink);
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.15s;
+      background: none; border: 1px solid var(--border); border-radius: 8px;
+      width: 32px; height: 32px; cursor: pointer; font-size: 1rem; color: var(--ink);
+      display: flex; align-items: center; justify-content: center; transition: background 0.15s;
     }
     .week-nav button:hover { background: var(--neutral); }
+    #week-display { font-weight: 600; font-size: 0.95rem; min-width: 190px; text-align: center; }
 
-    #week-display {
-      font-weight: 600;
-      font-size: 0.95rem;
-      min-width: 190px;
-      text-align: center;
-    }
+    /* SECTION LABEL */
+    .section-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 10px; }
 
-    /* ── SECTION LABEL ── */
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-bottom: 10px;
-    }
-
-    /* ── HOST TOGGLE ── */
+    /* HOST TOGGLE */
     .host-section { margin-top: 24px; }
-
     .host-toggle {
-      display: flex;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
+      display: flex; background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
     }
-
     .host-toggle button {
-      flex: 1;
-      padding: 14px 20px;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--ink-light);
-      transition: background 0.2s, color 0.2s;
-      display: flex; align-items: center; justify-content: center;
-      gap: 8px;
+      flex: 1; padding: 14px 20px; border: none; background: transparent; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; color: var(--ink-light);
+      transition: background 0.2s, color 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
     }
-
     .host-toggle button.active-jade   { background: var(--jade);   color: var(--white); }
     .host-toggle button.active-hunter { background: var(--hunter); color: var(--white); }
+    .host-dot { width: 10px; height: 10px; border-radius: 50%; background: currentColor; opacity: 0.7; }
 
-    .host-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: currentColor;
-      opacity: 0.7;
-    }
+    /* CARD */
+    .card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; margin-top: 20px; }
+    .card-header { padding: 16px 20px 12px; border-bottom: 1px solid var(--border); display: flex; align-items: baseline; gap: 10px; }
+    .card-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.1rem; }
+    .rate-badge { font-size: 0.75rem; font-weight: 600; padding: 3px 9px; border-radius: 20px; background: #f0ebe2; color: var(--ink-light); }
 
-    /* ── CARD ── */
-    .card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      margin-top: 20px;
-    }
-
-    .card-header {
-      padding: 16px 20px 12px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-    }
-
-    .card-header h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-    }
-
-    .rate-badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 20px;
-      background: #f0ebe2;
-      color: var(--ink-light);
-    }
-
-    /* ── SAME TIME ROW ── */
+    /* SAME TIME ROW */
     .same-time-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 10px 16px;
-      background: #faf9f6;
-      border-bottom: 1px solid var(--border);
-      flex-wrap: wrap;
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 16px; background: #faf9f6; border-bottom: 1px solid var(--border); flex-wrap: wrap;
     }
-
-    .same-time-row label {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--ink-light);
-      cursor: pointer;
-      user-select: none;
-      white-space: nowrap;
-    }
-
-    .same-time-row input[type="checkbox"] {
-      width: 15px; height: 15px;
-      accent-color: var(--jade);
-      cursor: pointer;
-    }
-
-    .same-time-inputs {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: opacity 0.2s;
-    }
-
+    .same-time-row label { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; font-weight: 500; color: var(--ink-light); cursor: pointer; user-select: none; white-space: nowrap; }
+    .same-time-row input[type="checkbox"] { width: 15px; height: 15px; accent-color: var(--jade); cursor: pointer; }
+    .same-time-inputs { display: flex; align-items: center; gap: 6px; }
     .same-time-inputs.disabled { display: none; }
-
     .same-time-inputs input[type="time"] {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 5px 9px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.83rem;
-      color: var(--ink);
-      background: var(--white);
-      width: 112px;
-      transition: border-color 0.15s;
+      border: 1px solid var(--border); border-radius: 8px; padding: 5px 8px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.83rem; color: var(--ink);
+      background: var(--white); width: 118px;
     }
-
     .same-time-inputs input[type="time"]:focus { outline: none; border-color: var(--jade); }
+    .arr { font-size: 0.8rem; color: var(--ink-light); flex-shrink: 0; }
 
-    .time-sep { font-size: 0.8rem; color: var(--ink-light); flex-shrink: 0; }
-
-    /* ── DAY ROWS (responsive) ── */
-    .day-rows { width: 100%; }
-
+    /* ── DAY ROW ──
+       Single flex row: [Day Name] [time input] [→] [time input] [hrs]
+       Works on both desktop and mobile with no wrapping.
+    */
     .day-row {
-      display: grid;
-      grid-template-columns: 110px 1fr 52px;
+      display: flex;
+      flex-direction: row;
       align-items: center;
-      gap: 6px;
-      padding: 10px 14px;
+      gap: 8px;
+      padding: 10px 16px;
       border-bottom: 1px solid var(--border);
-      transition: background 0.1s;
     }
-
     .day-row:last-child { border-bottom: none; }
     .day-row:hover { background: #faf9f6; }
 
-    /* header row */
     .day-row.header-row {
       background: #faf9f6;
-      border-bottom: 1px solid var(--border);
       padding: 8px 16px;
-    }
-
-    .day-row.header-row span {
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.07em;
       text-transform: uppercase;
       color: var(--ink-light);
     }
+    .day-row.header-row:hover { background: #faf9f6; }
 
-    .day-row.header-row .hrs-head { text-align: right; }
-
-    .day-name {
-      font-weight: 600;
-      font-size: 0.88rem;
-      color: var(--ink);
-    }
-
-    .time-field {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .time-field label {
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      display: none; /* hidden on desktop, shown on mobile */
-    }
-
-    .time-field input[type="time"] {
+    .col-day  { flex: 0 0 96px; font-weight: 600; font-size: 0.9rem; }
+    .col-time { flex: 1; min-width: 0; }
+    .col-time input[type="time"] {
+      width: 100%;
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 7px 6px;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       color: var(--ink);
       background: var(--white);
-      width: 100%;
-      min-width: 0;
       cursor: pointer;
-      transition: border-color 0.15s;
     }
+    .col-time input[type="time"]:focus { outline: none; border-color: var(--jade); }
+    .col-hrs { flex: 0 0 42px; text-align: right; font-weight: 600; font-size: 0.88rem; }
 
-    .time-field input[type="time"]:focus { outline: none; border-color: var(--jade); }
+    .day-row.locked .col-time { opacity: 0.5; pointer-events: none; }
 
-    .elapsed {
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-align: right;
-      white-space: nowrap;
-      color: var(--ink);
-    }
-
-    /* locked rows */
-    .day-row.locked .time-pair { opacity: 0.5; pointer-events: none; }
-
-    /* ── MOBILE ── */
-    @media (max-width: 600px) {
-      .day-row {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 6px;
-        padding: 10px 12px;
-        flex-wrap: nowrap;
-      }
-
+    /* Mobile: shrink day name and font sizes slightly */
+    @media (max-width: 480px) {
+      .day-row { gap: 5px; padding: 10px 12px; }
+      .col-day  { flex: 0 0 76px; font-size: 0.78rem; }
+      .col-time input[type="time"] { font-size: 0.72rem; padding: 6px 3px; }
+      .arr { font-size: 0.7rem; }
+      .col-hrs { flex: 0 0 36px; font-size: 0.78rem; }
+      .same-time-inputs input[type="time"] { width: 100px; font-size: 0.78rem; }
       .day-row.header-row { display: none; }
-
-      .day-name {
-        font-size: 0.78rem;
-        font-weight: 700;
-        width: 72px;
-        min-width: 72px;
-        flex-shrink: 0;
-      }
-
-      /* time-pair fills remaining space, arrow stays between fields */
-      .time-pair {
-        flex: 1;
-        min-width: 0;
-        gap: 4px;
-      }
-
-      .time-field label { display: none; }
-
-      .time-field input[type="time"] {
-        font-size: 0.72rem;
-        padding: 5px 3px;
-        text-align: center;
-      }
-
-      .time-sep {
-        font-size: 0.7rem;
-        padding: 0;
-      }
-
-      .elapsed {
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: var(--ink);
-        white-space: nowrap;
-        flex-shrink: 0;
-        min-width: 34px;
-        text-align: right;
-      }
-
-      .elapsed::before { content: none; }
-
-      .same-time-row { gap: 8px; flex-wrap: wrap; }
-
-      .same-time-inputs input[type="time"] {
-        width: 88px;
-        font-size: 0.78rem;
-        padding: 5px 4px;
-      }
     }
 
-    /* ── FAMILY CARD (non-host solo) ── */
-    .family-card {
-      border-radius: var(--radius);
-      border: 2px solid transparent;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      margin-top: 20px;
-    }
-
+    /* FAMILY CARD */
+    .family-card { border-radius: var(--radius); border: 2px solid transparent; overflow: hidden; box-shadow: var(--shadow); margin-top: 20px; }
     .family-card.jade-card   { border-color: var(--jade-mid); }
     .family-card.hunter-card { border-color: var(--hunter-mid); }
-
-    .family-card-header {
-      padding: 13px 18px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .family-card-header { padding: 13px 18px; font-weight: 600; font-size: 0.9rem; }
     .jade-card .family-card-header   { background: var(--jade-light);   color: var(--jade); }
     .hunter-card .family-card-header { background: var(--hunter-light); color: var(--hunter); }
-
-    .family-card-header .rate-badge { margin-left: auto; }
-
-    .family-card .day-rows { background: var(--white); }
     .family-card .day-row.header-row { background: var(--white); }
+    .family-card .day-row { background: var(--white); }
+    .family-card .day-row:hover { background: #faf9f6; }
 
-    /* ── SUMMARY ── */
+    /* SUMMARY */
     .summary-section { margin-top: 28px; }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    @media (max-width: 520px) { .summary-grid { grid-template-columns: 1fr; } }
-
+    .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 480px) { .summary-grid { grid-template-columns: 1fr; } }
     .summary-card { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
     .summary-card.jade   { border: 2px solid var(--jade-mid); }
     .summary-card.hunter { border: 2px solid var(--hunter-mid); }
-
-    .summary-card-header {
-      padding: 14px 20px;
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.15rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
+    .summary-card-header { padding: 14px 20px; font-family: 'DM Serif Display', serif; font-size: 1.15rem; display: flex; align-items: center; justify-content: space-between; }
     .jade .summary-card-header   { background: var(--jade-light);   color: var(--jade); }
     .hunter .summary-card-header { background: var(--hunter-light); color: var(--hunter); }
-
     .summary-total { font-size: 1.4rem; font-weight: 700; }
-
     .summary-body { background: var(--white); padding: 14px 20px; }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 6px 0;
-      font-size: 0.85rem;
-      border-bottom: 1px solid var(--border);
-    }
-
+    .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 0.85rem; border-bottom: 1px solid var(--border); }
     .summary-row:last-child { border-bottom: none; }
     .summary-row .label { color: var(--ink-light); }
     .summary-row .value { font-weight: 600; }
 
-    /* ── ACTIONS ── */
+    /* ACTIONS */
     .actions { margin-top: 28px; display: flex; gap: 12px; justify-content: flex-end; }
-
-    .btn {
-      padding: 10px 22px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--white);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.15s, border-color 0.15s;
-      color: var(--ink);
-    }
-
-    .btn:hover { background: var(--neutral); border-color: #ccc; }
+    .btn { padding: 10px 22px; border-radius: 10px; border: 1px solid var(--border); background: var(--white); font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; color: var(--ink); }
+    .btn:hover { background: var(--neutral); }
   </style>
 </head>
 <body>
@@ -494,51 +224,48 @@
     </div>
   </div>
 
-  <!-- LILLI'S FULL DAY (hosting family) -->
+  <!-- LILLI'S HOURS -->
   <div class="card" style="margin-top:24px;">
     <div class="card-header">
       <h2>Lilli's Hours</h2>
-      <span id="host-rate-badge" class="rate-badge">Hosting family's schedule</span>
+      <span class="rate-badge">Hosting family's schedule</span>
     </div>
-
     <div class="same-time-row">
-      <label>
-        <input type="checkbox" id="sh-same-check" onchange="toggleSameShared()">
-        Same time all days
-      </label>
+      <label><input type="checkbox" id="sh-same-check" onchange="toggleSame('sh')"> Same time all days</label>
       <div class="same-time-inputs disabled" id="sh-same-inputs">
-        <input type="time" id="sh-same-start" value="" oninput="applySameShared()">
-        <span class="time-sep">&#8594;</span>
-        <input type="time" id="sh-same-end" value="" oninput="applySameShared()">
+        <input type="time" id="sh-same-start" oninput="applySame('sh')">
+        <span class="arr">&#8594;</span>
+        <input type="time" id="sh-same-end" oninput="applySame('sh')">
       </div>
     </div>
-
-    <div class="day-rows">
-      <div class="day-row header-row">
-        <span>Day</span><span>Start Time</span><span>End Time</span><span class="hrs-head">Hrs</span>
-      </div>
-      <div class="day-row" id="sh-tue-row">
-        <span class="day-name">Tuesday</span>
-        <div class="time-pair"><div class="time-field"><label>Start</label><input type="time" id="sh-tue-start" oninput="calc()"></div><span class="time-sep">&#8594;</span><div class="time-field"><label>End</label><input type="time" id="sh-tue-end" oninput="calc()"></div></div>
-        <span class="elapsed" id="sh-tue-hrs">—</span>
-      </div>
-      <div class="day-row" id="sh-wed-row">
-        <span class="day-name">Wednesday</span>
-        <div class="time-pair"><div class="time-field"><label>Start</label><input type="time" id="sh-wed-start" oninput="calc()"></div><span class="time-sep">&#8594;</span><div class="time-field"><label>End</label><input type="time" id="sh-wed-end" oninput="calc()"></div></div>
-        <span class="elapsed" id="sh-wed-hrs">—</span>
-      </div>
-      <div class="day-row" id="sh-thu-row">
-        <span class="day-name">Thursday</span>
-        <div class="time-pair"><div class="time-field"><label>Start</label><input type="time" id="sh-thu-start" oninput="calc()"></div><span class="time-sep">&#8594;</span><div class="time-field"><label>End</label><input type="time" id="sh-thu-end" oninput="calc()"></div></div>
-        <span class="elapsed" id="sh-thu-hrs">—</span>
-      </div>
+    <div class="day-row header-row">
+      <span class="col-day">Day</span><span class="col-time">Start</span><span class="arr"></span><span class="col-time">End</span><span class="col-hrs">Hrs</span>
+    </div>
+    <div class="day-row" id="sh-tue-row">
+      <span class="col-day">Tuesday</span>
+      <div class="col-time"><input type="time" id="sh-tue-start" oninput="calc()"></div>
+      <span class="arr">&#8594;</span>
+      <div class="col-time"><input type="time" id="sh-tue-end" oninput="calc()"></div>
+      <span class="col-hrs" id="sh-tue-hrs">—</span>
+    </div>
+    <div class="day-row" id="sh-wed-row">
+      <span class="col-day">Wednesday</span>
+      <div class="col-time"><input type="time" id="sh-wed-start" oninput="calc()"></div>
+      <span class="arr">&#8594;</span>
+      <div class="col-time"><input type="time" id="sh-wed-end" oninput="calc()"></div>
+      <span class="col-hrs" id="sh-wed-hrs">—</span>
+    </div>
+    <div class="day-row" id="sh-thu-row">
+      <span class="col-day">Thursday</span>
+      <div class="col-time"><input type="time" id="sh-thu-start" oninput="calc()"></div>
+      <span class="arr">&#8594;</span>
+      <div class="col-time"><input type="time" id="sh-thu-end" oninput="calc()"></div>
+      <span class="col-hrs" id="sh-thu-hrs">—</span>
     </div>
   </div>
 
-  <!-- NON-HOST FAMILY HOURS (the overlap = shared time) -->
-  <div id="nonhost-card-wrap">
-    <!-- filled by renderNonHostCard() -->
-  </div>
+  <!-- NON-HOST FAMILY HOURS -->
+  <div id="nonhost-card-wrap"></div>
 
   <!-- SUMMARY -->
   <div class="summary-section">
@@ -576,22 +303,16 @@
 
   // ── WEEK NAV ─────────────────────────────────────────
   let weekOffset = 0;
-
   function getTuesdayRange(offset) {
     const today = new Date();
     const dist = (today.getDay() + 7 - 2) % 7;
     const tue = new Date(today);
     tue.setDate(today.getDate() - dist + offset * 7);
-    const thu = new Date(tue);
-    thu.setDate(tue.getDate() + 2);
+    const thu = new Date(tue); thu.setDate(tue.getDate() + 2);
     const o = { month:'short', day:'numeric' };
-    return tue.toLocaleDateString('en-US', o) + ' \u2013 ' + thu.toLocaleDateString('en-US', o);
+    return tue.toLocaleDateString('en-US',o) + ' \u2013 ' + thu.toLocaleDateString('en-US',o);
   }
-
-  function updateWeekDisplay() {
-    document.getElementById('week-display').textContent = getTuesdayRange(weekOffset);
-  }
-
+  function updateWeekDisplay() { document.getElementById('week-display').textContent = getTuesdayRange(weekOffset); }
   document.getElementById('prev-week').addEventListener('click', () => { weekOffset--; updateWeekDisplay(); });
   document.getElementById('next-week').addEventListener('click', () => { weekOffset++; updateWeekDisplay(); });
   updateWeekDisplay();
@@ -607,37 +328,32 @@
 
   // ── NON-HOST CARD ─────────────────────────────────────
   function nonHostCardHTML(family) {
-    const colorClass = family + '-card';
     const label = family === 'jade' ? 'Jade' : 'Hunter';
-    const rows = DAYS.map(d =>
+    const cls   = family + '-card';
+    const rows  = DAYS.map(d =>
       '<div class="day-row" id="nh-' + d + '-row">' +
-        '<span class="day-name">' + DAY_LABELS[d] + '</span>' +
-        '<div class="time-pair">' +
-        '<div class="time-field"><label>Start</label><input type="time" id="nh-' + d + '-start" oninput="calc()"></div>' +
-        '<span class="time-sep">&#8594;</span>' +
-        '<div class="time-field"><label>End</label><input type="time" id="nh-' + d + '-end" oninput="calc()"></div>' +
-        '</div>' +
-        '<span class="elapsed" id="nh-' + d + '-hrs">\u2014</span>' +
+        '<span class="col-day">' + DAY_LABELS[d] + '</span>' +
+        '<div class="col-time"><input type="time" id="nh-' + d + '-start" oninput="calc()"></div>' +
+        '<span class="arr">&#8594;</span>' +
+        '<div class="col-time"><input type="time" id="nh-' + d + '-end" oninput="calc()"></div>' +
+        '<span class="col-hrs" id="nh-' + d + '-hrs">\u2014</span>' +
       '</div>'
     ).join('');
 
-    return '<div class="family-card ' + colorClass + '">' +
-      '<div class="family-card-header">' +
-        '<span>' + label + '\'s Hours</span>' +
-        '' +
-      '</div>' +
+    return '<div class="family-card ' + cls + '">' +
+      '<div class="family-card-header">' + label + '\'s Hours</div>' +
       '<div class="same-time-row" style="background:var(--white);">' +
-        '<label><input type="checkbox" id="nh-same-check" onchange="toggleSameNH()"> Same time all days</label>' +
+        '<label><input type="checkbox" id="nh-same-check" onchange="toggleSame(\'nh\')"> Same time all days</label>' +
         '<div class="same-time-inputs disabled" id="nh-same-inputs">' +
-          '<input type="time" id="nh-same-start" value="" oninput="applySameNH()">' +
-          '<span class="time-sep">&#8594;</span>' +
-          '<input type="time" id="nh-same-end" value="" oninput="applySameNH()">' +
+          '<input type="time" id="nh-same-start" oninput="applySame(\'nh\')">' +
+          '<span class="arr">&#8594;</span>' +
+          '<input type="time" id="nh-same-end" oninput="applySame(\'nh\')">' +
         '</div>' +
       '</div>' +
-      '<div class="day-rows">' +
-        '<div class="day-row header-row"><span>Day</span><span>Start Time</span><span>End Time</span><span class="hrs-head">Hrs</span></div>' +
-        rows +
+      '<div class="day-row header-row">' +
+        '<span class="col-day">Day</span><span class="col-time">Start</span><span class="arr"></span><span class="col-time">End</span><span class="col-hrs">Hrs</span>' +
       '</div>' +
+      rows +
     '</div>';
   }
 
@@ -646,65 +362,25 @@
     document.getElementById('nonhost-card-wrap').innerHTML = nonHostCardHTML(nonHost);
   }
 
-  // ── SAME TIME — LILLI ─────────────────────────────────
-  function toggleSameShared() {
-    const checked = document.getElementById('sh-same-check').checked;
-    const div = document.getElementById('sh-same-inputs');
+  // ── SAME TIME ─────────────────────────────────────────
+  function toggleSame(prefix) {
+    const checked  = document.getElementById(prefix + '-same-check').checked;
+    const inputsDiv = document.getElementById(prefix + '-same-inputs');
     if (checked) {
-      div.classList.remove('disabled');
-      // Only pre-fill if Tuesday already has user-entered values
-      const s = document.getElementById('sh-tue-start').value;
-      const e = document.getElementById('sh-tue-end').value;
-      if (s) document.getElementById('sh-same-start').value = s;
-      if (e) document.getElementById('sh-same-end').value   = e;
-      // Only apply if we have actual values
-      if (s && e) applySameShared();
+      inputsDiv.classList.remove('disabled');
+      const s = document.getElementById(prefix + '-tue-start').value;
+      const e = document.getElementById(prefix + '-tue-end').value;
+      if (s) document.getElementById(prefix + '-same-start').value = s;
+      if (e) document.getElementById(prefix + '-same-end').value   = e;
+      if (s && e) applySame(prefix);
     } else {
-      // Clear master inputs and unlock rows
-      document.getElementById('sh-same-start').value = '';
-      document.getElementById('sh-same-end').value   = '';
-      div.classList.add('disabled');
+      document.getElementById(prefix + '-same-start').value = '';
+      document.getElementById(prefix + '-same-end').value   = '';
+      inputsDiv.classList.add('disabled');
       DAYS.forEach(d => {
-        document.getElementById('sh-' + d + '-start').value = '';
-        document.getElementById('sh-' + d + '-end').value   = '';
-        document.getElementById('sh-' + d + '-row').classList.remove('locked');
-      });
-      calc();
-    }
-  }
-
-  function applySameShared() {
-    if (!document.getElementById('sh-same-check').checked) return;
-    const s = document.getElementById('sh-same-start').value;
-    const e = document.getElementById('sh-same-end').value;
-    DAYS.forEach(d => {
-      document.getElementById('sh-' + d + '-start').value = s;
-      document.getElementById('sh-' + d + '-end').value   = e;
-      const row = document.getElementById('sh-' + d + '-row');
-      if (s || e) row.classList.add('locked'); else row.classList.remove('locked');
-    });
-    calc();
-  }
-
-  // ── SAME TIME — NON-HOST ──────────────────────────────
-  function toggleSameNH() {
-    const checked = document.getElementById('nh-same-check').checked;
-    const div = document.getElementById('nh-same-inputs');
-    if (checked) {
-      div.classList.remove('disabled');
-      const s = document.getElementById('nh-tue-start').value;
-      const e = document.getElementById('nh-tue-end').value;
-      if (s) document.getElementById('nh-same-start').value = s;
-      if (e) document.getElementById('nh-same-end').value   = e;
-      if (s && e) applySameNH();
-    } else {
-      document.getElementById('nh-same-start').value = '';
-      document.getElementById('nh-same-end').value   = '';
-      div.classList.add('disabled');
-      DAYS.forEach(d => {
-        const si = document.getElementById('nh-' + d + '-start');
-        const ei = document.getElementById('nh-' + d + '-end');
-        const row = document.getElementById('nh-' + d + '-row');
+        const si = document.getElementById(prefix + '-' + d + '-start');
+        const ei = document.getElementById(prefix + '-' + d + '-end');
+        const row = document.getElementById(prefix + '-' + d + '-row');
         if (si) si.value = '';
         if (ei) ei.value = '';
         if (row) row.classList.remove('locked');
@@ -713,14 +389,15 @@
     }
   }
 
-  function applySameNH() {
-    if (!document.getElementById('nh-same-check').checked) return;
-    const s = document.getElementById('nh-same-start').value;
-    const e = document.getElementById('nh-same-end').value;
+  function applySame(prefix) {
+    const checked = document.getElementById(prefix + '-same-check').checked;
+    if (!checked) return;
+    const s = document.getElementById(prefix + '-same-start').value;
+    const e = document.getElementById(prefix + '-same-end').value;
     DAYS.forEach(d => {
-      const si = document.getElementById('nh-' + d + '-start');
-      const ei = document.getElementById('nh-' + d + '-end');
-      const row = document.getElementById('nh-' + d + '-row');
+      const si  = document.getElementById(prefix + '-' + d + '-start');
+      const ei  = document.getElementById(prefix + '-' + d + '-end');
+      const row = document.getElementById(prefix + '-' + d + '-row');
       if (!si) return;
       si.value = s; ei.value = e;
       if (row) { if (s || e) row.classList.add('locked'); else row.classList.remove('locked'); }
@@ -735,80 +412,58 @@
     const p = el.value.split(':').map(Number);
     return p[0] * 60 + p[1];
   }
-
-  function overlapHours(lilliStartId, lilliEndId, nhStartId, nhEndId) {
-    const ls = parseTime(lilliStartId);
-    const le = parseTime(lilliEndId);
-    const ns = parseTime(nhStartId);
-    const ne = parseTime(nhEndId);
-    if (ls === null || le === null || ns === null || ne === null) return 0;
-    // overlap = max(starts) to min(ends)
-    const overlapStart = Math.max(ls, ns);
-    const overlapEnd   = Math.min(le, ne);
-    if (overlapEnd <= overlapStart) return 0;
-    return (overlapEnd - overlapStart) / 60;
-  }
-
-  function hoursElapsed(startId, endId) {
-    const s = parseTime(startId);
-    const e = parseTime(endId);
+  function hoursElapsed(sId, eId) {
+    const s = parseTime(sId), e = parseTime(eId);
     if (s === null || e === null || e <= s) return 0;
     return (e - s) / 60;
   }
-
+  function overlapHours(ls, le, ns, ne) {
+    // all in minutes
+    if (ls === null || le === null || ns === null || ne === null) return 0;
+    const start = Math.max(ls, ns), end = Math.min(le, ne);
+    return end > start ? (end - start) / 60 : 0;
+  }
   function fmtHrs(h)   { return h > 0 ? h.toFixed(2) : '0.00'; }
   function fmtMoney(n) { return '$' + n.toFixed(2); }
 
   // ── CALC ─────────────────────────────────────────────
-  // Logic:
-  //   sharedHrs (per day) = overlap between Lilli's hours and non-host's hours at the hosting home
-  //   hostSoloHrs (per day) = Lilli's total hours - sharedHrs  (hosting family absorbs this)
-  //   nonHostSoloHrs = 0 (they only pay for shared time)
-  //
-  //   Host pays:    sharedHrs × $16  +  hostSoloHrs × $23
-  //   NonHost pays: sharedHrs × $16
-
   function calc() {
-    let totalShared   = 0;
-    let totalLilli    = 0;
-    let totalHostSolo = 0;
+    let totalShared = 0, totalLilli = 0, totalHostSolo = 0;
 
     DAYS.forEach(d => {
-      const lilliHrs  = hoursElapsed('sh-' + d + '-start', 'sh-' + d + '-end');
-      const shared    = overlapHours('sh-' + d + '-start', 'sh-' + d + '-end', 'nh-' + d + '-start', 'nh-' + d + '-end');
-      const hostSolo  = Math.max(0, lilliHrs - shared);
+      const ls = parseTime('sh-' + d + '-start');
+      const le = parseTime('sh-' + d + '-end');
+      const ns = parseTime('nh-' + d + '-start');
+      const ne = parseTime('nh-' + d + '-end');
+
+      const lilliHrs = (ls !== null && le !== null && le > ls) ? (le - ls) / 60 : 0;
+      const shared   = overlapHours(ls, le, ns, ne);
+      const hostSolo = Math.max(0, lilliHrs - shared);
 
       totalLilli    += lilliHrs;
       totalShared   += shared;
       totalHostSolo += hostSolo;
 
-      // Show Lilli's total hours per day
       document.getElementById('sh-' + d + '-hrs').textContent = fmtHrs(lilliHrs);
-
-      // Show non-host's shared hours per day
       const nhEl = document.getElementById('nh-' + d + '-hrs');
       if (nhEl) nhEl.textContent = fmtHrs(shared);
     });
 
-    const sharedCostEach  = totalShared   * SHARED_RATE;
-    const hostSoloCost    = totalHostSolo * SOLO_RATE;
-
-    const nonHost = host === 'jade' ? 'hunter' : 'jade';
+    const sharedCostEach = totalShared   * SHARED_RATE;
+    const hostSoloCost   = totalHostSolo * SOLO_RATE;
 
     const hostCosts    = { shared: sharedCostEach, solo: hostSoloCost };
     const nonHostCosts = { shared: sharedCostEach, solo: 0 };
+    const jadeCosts    = host === 'jade'   ? hostCosts : nonHostCosts;
+    const hunterCosts  = host === 'hunter' ? hostCosts : nonHostCosts;
+    const jadeSolo     = host === 'jade'   ? totalHostSolo : 0;
+    const hunterSolo   = host === 'hunter' ? totalHostSolo : 0;
 
-    const jadeCosts   = host === 'jade'   ? hostCosts    : nonHostCosts;
-    const hunterCosts = host === 'hunter' ? hostCosts    : nonHostCosts;
-    const jadeSolo    = host === 'jade'   ? totalHostSolo : 0;
-    const hunterSolo  = host === 'hunter' ? totalHostSolo : 0;
-
-    document.getElementById('jade-shared-line').textContent = fmtHrs(totalShared) + ' hrs = ' + fmtMoney(jadeCosts.shared);
-    document.getElementById('jade-solo-line').textContent   = jadeCosts.solo > 0 ? fmtHrs(jadeSolo) + ' hrs = ' + fmtMoney(jadeCosts.solo) : '\u2014';
-    document.getElementById('jade-total').textContent       = fmtMoney(jadeCosts.shared + jadeCosts.solo);
-
+    document.getElementById('jade-shared-line').textContent   = fmtHrs(totalShared) + ' hrs = ' + fmtMoney(jadeCosts.shared);
+    document.getElementById('jade-solo-line').textContent     = jadeCosts.solo > 0   ? fmtHrs(jadeSolo)    + ' hrs = ' + fmtMoney(jadeCosts.solo)   : '\u2014';
+    document.getElementById('jade-total').textContent         = fmtMoney(jadeCosts.shared   + jadeCosts.solo);
     document.getElementById('hunter-shared-line').textContent = fmtHrs(totalShared) + ' hrs = ' + fmtMoney(hunterCosts.shared);
-    document.getElementById('hunter-solo-line').textContent   = hunterCosts.solo > 0 ? fmtHrs(hunterSolo) + ' hrs = ' + fmtMoney(hunterCosts.solo) : '\u2014';
+    document.getElementById('hunter-solo-line').textContent   = hunterCosts.solo > 0 ? fmtHrs(hunterSolo)  + ' hrs = ' + fmtMoney(hunterCosts.solo) : '\u2014';
     document.getElementById('hunter-total').textContent       = fmtMoney(hunterCosts.shared + hunterCosts.solo);
   }
 
