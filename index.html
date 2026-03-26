@@ -319,6 +319,21 @@
     host = h;
     document.getElementById('host-jade').className   = h === 'jade'   ? 'active-jade'   : '';
     document.getElementById('host-hunter').className = h === 'hunter' ? 'active-hunter' : '';
+
+    // Pre-fill Lilli's default hours based on host
+    const defaultStart = h === 'hunter' ? '08:15' : '08:30';
+    const defaultEnd   = h === 'hunter' ? '17:30' : '17:00';
+    DAYS.forEach(function(d) {
+      document.getElementById('sh-' + d + '-start').value = defaultStart;
+      document.getElementById('sh-' + d + '-end').value   = defaultEnd;
+    });
+
+    // Also check "Same time all days" and set master inputs
+    document.getElementById('sh-same-check').checked = true;
+    document.getElementById('sh-same-inputs').classList.remove('disabled');
+    document.getElementById('sh-same-start').value = defaultStart;
+    document.getElementById('sh-same-end').value   = defaultEnd;
+
     renderNonHostCard();
     calc();
   }
